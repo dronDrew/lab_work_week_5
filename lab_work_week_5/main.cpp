@@ -1,20 +1,26 @@
 #include "dependies.h"
 #include "list_template.h"
 #include "line_to_direction_template.h"
+#include "binary_tree.h"
 using namespace std;
 
 int main() {
-	list_two_direcktion<int> a;
-	a.Add_to_tail(15);
+	setlocale(LC_ALL, "rus");
+	binary_tree a;
+	a.InitDictionery();
 	//a.Show();
-	a.Add_to_tail(18);
-	a.Add_to_tail(18);
-	a.Add_to_position(3, 18);
-	//a.Delete_from_position(3);
-	a.Show();
-	cout <<"___________________________________________"<< endl;
-	a.Direction_swap();
-	cout << "___________________________________________" << endl;
-	a.Show();
+	string aq = "apple";
+	string ax = "торт";
+	string az = "антоновка";
+	string aa = "якорь";
+	string ap = "pearch";
+	a.Search(aq);
+	a.Edit_translation(aq, az);
+	a.Search(aq);
+	//a.Delete_translation(aq);
+	a.Add_translation(aq, aa);
+	a.Add_translation(aq, ap);
+	a.Search(aq);
+	a.Search(ax);
 	return 0;
 }
