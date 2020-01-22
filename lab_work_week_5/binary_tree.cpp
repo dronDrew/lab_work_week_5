@@ -162,3 +162,56 @@ void binary_tree::Delete_translation(std::string& a) {
         }
     }
 }
+void binary_tree::Thre_most_popular() {
+    int max_left{0};
+    int not_much{ 1000000 };
+    int max_right{ 0 };
+    int Top{ 3 };
+    while (Top > 0)
+    {
+        Element* temp = this->root;
+        while (temp != nullptr)
+        {
+            if (max_left < temp->counter && temp->counter < not_much) {
+                max_left = temp->counter;
+            }
+            temp = temp->leftlives;
+        }
+        temp = this->root;
+        while (temp != nullptr)
+        {
+            if (max_right < temp->counter && temp->counter < not_much) {
+                max_right = temp->counter;
+            }
+            temp = temp->rightlives;
+        }
+        if (max_right > max_left&& max_right < not_much)
+        {
+            temp = this->root;
+            while (temp != nullptr)
+            {
+                if (max_right == temp->counter) {
+                    std::cout << temp->word << std::endl;
+                }
+                temp = temp->rightlives;
+            }
+            not_much = max_right;
+        }
+        else
+        {
+            temp = this->root;
+            while (temp != nullptr)
+            {
+                if (max_left == temp->counter) {
+                    std::cout << temp->word << std::endl;
+                }
+                temp = temp->leftlives;
+            }
+            not_much = max_left;
+        }
+        max_left = 0;
+        max_right = 0;
+        --Top;
+    }
+
+}

@@ -19,6 +19,7 @@ public:
     void Edit_translation(std::string& a, std::string b);
     void Add_translation(std::string& a, std::string b);
     void Delete_translation(std::string& a);
+    void Thre_most_popular();
 
 };
 

@@ -14,13 +14,19 @@ int main() {
 	string az = "антоновка";
 	string aa = "якорь";
 	string ap = "pearch";
+	string at = "dog";
 	a.Search(aq);
+	a.Search(ax);
+	//a.Search(ax);
 	a.Edit_translation(aq, az);
 	a.Search(aq);
+	a.Search(at);
 	//a.Delete_translation(aq);
 	a.Add_translation(aq, aa);
 	a.Add_translation(aq, ap);
 	a.Search(aq);
 	a.Search(ax);
+	cout << "________________________________\n";
+	a.Thre_most_popular();
 	return 0;
 }
