@@ -204,6 +204,7 @@ void binary_tree::Thre_most_popular() {
             {
                 if (max_left == temp->counter) {
                     std::cout << temp->word << std::endl;
+                    break;
                 }
                 temp = temp->leftlives;
             }
@@ -212,6 +213,83 @@ void binary_tree::Thre_most_popular() {
         max_left = 0;
         max_right = 0;
         --Top;
+    }
+
+}
+void binary_tree::Thre_most_unpopular() {
+    float average{ 0 };
+    int iterator{ 0 };
+    Element* temp=this->root;
+    while (temp!=nullptr)
+    {
+        if (temp->counter > 0) {
+            average += temp->counter;
+            iterator++;
+        }
+        temp = temp->leftlives;
+    }
+    temp = this->root;
+    while (temp != nullptr)
+    {
+        if (temp->counter > 0) {
+            average += temp->counter;
+            iterator++;
+        }
+        temp = temp->rightlives;
+    }
+    average /= iterator;
+    //std::cout << average << std::endl;
+    int Top{ 3 };
+    int Lest_left{ 0 };
+    int Lest_right{ 0 };
+    while (Top>0)
+    {
+        Element* temp = this->root;
+        while (temp != nullptr)
+        {
+            if (Lest_left < temp->counter && temp->counter <average) {
+                Lest_left = temp->counter;
+            }
+            temp = temp->leftlives;
+        }
+        temp = this->root;
+        while (temp != nullptr)
+        {
+            if (Lest_right < temp->counter && temp->counter < average) {
+                Lest_right = temp->counter;
+            }
+            temp = temp->rightlives;
+        }
+        if ((Lest_right <Lest_left)&& (Lest_right <= average)&&(Lest_right>0))
+        {
+            temp = this->root;
+            while (temp != nullptr)
+            {
+                if (Lest_right == temp->counter) {
+                    std::cout << temp->word << std::endl;
+                    break;
+                }
+                temp = temp->rightlives;
+            }
+            average = Lest_right;
+        }
+        else
+        {
+            temp = this->root;
+            while (temp != nullptr)
+            {
+                if (Lest_left == temp->counter) {
+                    std::cout << temp->word << std::endl;
+                    break;
+                }
+                temp = temp->leftlives;
+            }
+            average = Lest_left;
+        }
+        Lest_left = 0;
+        Lest_right = 0;
+        --Top;
+
     }
 
 }
