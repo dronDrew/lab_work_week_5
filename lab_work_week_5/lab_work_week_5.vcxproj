@@ -139,16 +139,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="binary_tree.h" />
+    <ClInclude Include="Bus_company.h" />
     <ClInclude Include="dependies.h" />
     <ClInclude Include="line_to_direction_template.h" />
     <ClInclude Include="list_template.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="binary_tree.cpp" />
+    <ClCompile Include="Bus_company.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="dictionary.txt" />
+    <Text Include="info.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
