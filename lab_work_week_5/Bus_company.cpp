@@ -88,7 +88,14 @@ bool Save_info_to_file(Bus_company & first) {
 		file_to_saving << "Surname of Driver : " << temp->first->surname_of_driver << std::endl;
 		file_to_saving << "Number of Line    : " << temp->first->number_of_line << std::endl;
 		file_to_saving << "Place in Bus      : " << temp->first->place_in_bus << std::endl;
-		while (temp->first->number_of_bus<=begin)
+		if (temp->first->biger_number != nullptr) {
+			file_to_saving << "Number of Bus     : " << temp->first->biger_number->number_of_bus << std::endl;
+			file_to_saving << "Name of driver    : " << temp->first->biger_number->name_of_driver << std::endl;
+			file_to_saving << "Surname of Driver : " << temp->first->biger_number->surname_of_driver << std::endl;
+			file_to_saving << "Number of Line    : " << temp->first->biger_number->number_of_line << std::endl;
+			file_to_saving << "Place in Bus      : " << temp->first->biger_number->place_in_bus << std::endl;
+		}
+		while (temp->first->number_of_bus!=begin)
 		{
 			temp->first = temp->first->privious_bus;
 			file_to_saving << "Number of Bus     : " << temp->first->number_of_bus << std::endl;
@@ -96,12 +103,37 @@ bool Save_info_to_file(Bus_company & first) {
 			file_to_saving << "Surname of Driver : " << temp->first->surname_of_driver << std::endl;
 			file_to_saving << "Number of Line    : " << temp->first->number_of_line << std::endl;
 			file_to_saving << "Place in Bus      : " << temp->first->place_in_bus << std::endl;
-			file_to_saving << "Number of Bus     : " << temp->first->biger_number->number_of_bus << std::endl;
-			file_to_saving << "Name of driver    : " << temp->first->biger_number->name_of_driver << std::endl;
-			file_to_saving << "Surname of Driver : " << temp->first->biger_number->surname_of_driver << std::endl;
-			file_to_saving << "Number of Line    : " << temp->first->biger_number->number_of_line << std::endl;
-			file_to_saving << "Place in Bus      : " << temp->first->biger_number->place_in_bus << std::endl;
+			if (temp->first->biger_number != nullptr) {
+				file_to_saving << "Number of Bus     : " << temp->first->biger_number->number_of_bus << std::endl;
+				file_to_saving << "Name of driver    : " << temp->first->biger_number->name_of_driver << std::endl;
+				file_to_saving << "Surname of Driver : " << temp->first->biger_number->surname_of_driver << std::endl;
+				file_to_saving << "Number of Line    : " << temp->first->biger_number->number_of_line << std::endl;
+				file_to_saving << "Place in Bus      : " << temp->first->biger_number->place_in_bus << std::endl;
+			}
 		}
+		temp = &first;
+		int iter{ 0 };
+		temp->first = temp->first->biger_number;
+		while (temp->first!=nullptr)
+		{
+			if (iter > 0) {
+				file_to_saving << "Number of Bus     : " << temp->first->number_of_bus << std::endl;
+				file_to_saving << "Name of driver    : " << temp->first->name_of_driver << std::endl;
+				file_to_saving << "Surname of Driver : " << temp->first->surname_of_driver << std::endl;
+				file_to_saving << "Number of Line    : " << temp->first->number_of_line << std::endl;
+				file_to_saving << "Place in Bus      : " << temp->first->place_in_bus << std::endl;
+			}
+			if (temp->first->less_number != nullptr) {
+				file_to_saving << "Number of Bus     : " << temp->first->less_number->number_of_bus << std::endl;
+				file_to_saving << "Name of driver    : " << temp->first->less_number->name_of_driver << std::endl;
+				file_to_saving << "Surname of Driver : " << temp->first->less_number->surname_of_driver << std::endl;
+				file_to_saving << "Number of Line    : " << temp->first->less_number->number_of_line << std::endl;
+				file_to_saving << "Place in Bus      : " << temp->first->less_number->place_in_bus << std::endl;
+			}
+			iter++;
+			temp->first = temp->first->biger_number;
+		}
+		file_to_saving.close();
 		
 	}
 	else {
